@@ -33,11 +33,11 @@ scheduleapp
 
 # 実装予定の機能
 
-# テーブル設計
-
 # データベース設計
+![Alt text](schedule.png)
 
 # 画面遷移図
+![Alt text](schedule1.png)
 
 # 開発環境
 
