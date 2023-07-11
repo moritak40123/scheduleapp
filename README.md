@@ -54,7 +54,7 @@ scheduleapp
 | Column      | Type    | Options     |
 | ----------- | ------- | ------------|
 | room_name   | string  | null: false |
-| description | string  | null: false |
+| description | string  |             |
 
 ### Association
 
