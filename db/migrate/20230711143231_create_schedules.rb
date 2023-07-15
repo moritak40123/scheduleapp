@@ -1,10 +1,10 @@
 class CreateSchedules < ActiveRecord::Migration[6.0]
   def change
     create_table :schedules do |t|
-      t.string :title
+      t.string :title, null: false
       t.string :body
-      t.datetime :start_date
-      t.datetime :end_date
+      t.datetime :start_time
+      t.datetime :end_time
       t.references :room, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.timestamps

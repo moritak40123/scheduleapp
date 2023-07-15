@@ -79,9 +79,9 @@ scheduleapp
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | title       | string     | null: false                    |
-| body        | string     | null: false                    |
-| start_date  | datetime   | null: false                    |
-| end_date    | datetime   | null: false                    |
+| body        | string     |                                |
+| start_date  | datetime   |                                |
+| end_date    | datetime   |                                |
 | user        | references | null: false, foreign_key: true |
 | room        | references | null: false, foreign_key: true |
 

@@ -1,1 +1,17 @@
-<h1>グループ名</h1>
+<div class="wrapper">
+  <%= render "schedules/header" %>
+  
+  <div class="side_bar">
+      <%= render "schedules/side_bar" %>
+  </div>
+
+  <%= month_calendar schedules: @schedules do |date, schedules| %>
+    <%= date.day %>
+      <% @schedules.each do |schedule| %>
+        <% if schedule.start_time.to_date == date %>
+          <%= schedule.title %>
+        <% end %>
+      <% end %>
+  <% end %>
+  <%# <%= link_to "スケジュール作成", new_room_schedule_path(@room), class: "nav-link" %> %>
+</div>
