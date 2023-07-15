@@ -2,16 +2,29 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <% if @room %>
       <h1 class="h2"><%= @room.room_name %></h1>
+      <div class='chat-room-form__field'>
+        <div class='chat-room-form__field--left'>
+          <label class='chat-room-form__label'></label>
+        </div>
+        <div class='chat-room-form__field--right'>
+          <div>グループメンバー</div>
+          <% @room.users.each do |user| %>
+            <div><%= user.name %></div>
+          <% end %>
+        </div>
+      </div>
     <% else %>
       <h1 class="h2">スケジュール一覧</h1>
     <% end %>
 
     <div class="btn-toolbar mb-2 mb-md-0">
-      <div class="btn-group me-2">
-        <button type="button" class="btn btn-sm btn-outline-secondary">
-          <%= link_to "スケジュール作成", new_room_schedule_path(@room), class: "nav-link" %>
-        </button>
-      </div>
+      <% if @room %>
+        <div class="btn-group me-2">
+          <button type="button" class="btn btn-sm btn-outline-secondary">
+            <%= link_to "スケジュール作成", new_room_schedule_path(@room), class: "nav-link" %>
+          </button>
+        </div>
+        <% end %>
     </div>
   </div>
 
@@ -19,7 +32,9 @@
     <%= month_calendar schedules: @schedules do |date, schedules| %>
       <%= date.day %>
         <% @schedules.each do |schedule| %>
-          <% if schedule.start_time.to_date == date %>
+          <% start_date = schedule.start_time.to_date %>
+          <% end_date = schedule.end_time.to_date %>
+          <% if start_date <= date && date <= end_date %>
             <%= schedule.title %>
           <% end %>
         <% end %>
