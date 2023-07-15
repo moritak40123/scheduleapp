@@ -7,55 +7,6 @@
 
   <div class='chat-room-form'>
     <h1>新規スケジュール</h1>
-    <div class='chat-room-form__field'>
-      <div class='chat-room-form__field--left'>
-        <label class='chat-room-form__label'>グループメンバー</label>
-      </div>
-      <div class='chat-room-form__field--right'>
-        <% @room.users.each do |user| %>
-          <div><%= user.name %></div>
-        <% end %>
-      </div>
-    </div>
-    <%=form_with model: [@room, @schedule], local: true do |f|%>
-      <div class='chat-room-form__field'>
-        <div class='chat-room-form__field--left'>
-          <%= f.label :title, :タイトル, class: 'chat-room-form__label'%>
-        </div>
-        <div class='chat-room-form__field--right'>
-          <%= f.text_field :title, class: 'chat__room_name chat-room-form__input', placeholder: 'グループ名を入力してください'%>
-        </div>
-      </div>
-      <div class='chat-room-form__field'>
-        <div class='chat-room-form__field--left'>
-          <%= f.label :body, :スケジュールの詳細, class: 'chat-room-form__label'%>
-        </div>
-        <div class='chat-room-form__field--right'>
-          <%= f.text_field :body, class: 'chat__room_name chat-room-form__input', placeholder: 'グループの詳細を入力してください'%>
-        </div>
-      </div>
-      <div class='chat-room-form__field'>
-        <div class='chat-room-form__field--left'>
-          <%= f.label :start_time, :開始, class: 'chat-room-form__label'%>
-        </div>
-        <div class='chat-room-form__field--right'>
-          <%= f.datetime_field :start_time, class: 'chat__room_name chat-room-form__input', placeholder: '開始時刻を選択してください'%>
-        </div>
-      </div>
-      <div class='chat-room-form__field'>
-        <div class='chat-room-form__field--left'>
-          <%= f.label :end_time, :終了, class: 'chat-room-form__label'%>
-        </div>
-        <div class='chat-room-form__field--right'>
-          <%= f.datetime_field :end_time, class: 'chat__room_name chat-room-form__input', placeholder: '終了時刻を選択してください'%>
-        </div>
-      </div>
-      <div class='chat-room-form__field'>
-        <div class='chat-room-form__field--left'></div>
-        <div class='chat-room-form__field--right'>
-          <%= f.submit class: 'chat-room-form__action-btn'%>
-        </div>
-      </div>
-    <% end %>
+      <%= render partial: "form", locals: { schedule: @schedule } %>
   </div>
 </div>

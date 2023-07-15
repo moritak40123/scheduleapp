@@ -1,16 +1,7 @@
 class SchedulesController < ApplicationController
   def index
     @schedule = Schedule.new
-    if params[:room_id]
-      @room = Room.find(params[:room_id])
-      if @room
-        @schedules = @room.schedules.includes(:user)
-      else
-        redirect_to rooms_path
-      end
-    else
-      @schedules = Schedule.all
-    end
+    @schedules = current_user.schedules.includes(:user)
   end
 
   def new
@@ -26,8 +17,30 @@ class SchedulesController < ApplicationController
       redirect_to room_schedules_path(@room)
     else
       @schedules = @room.schedules.includes(:user)
-      render :index
+      render :new
     end
+  end
+
+  def edit
+    @room = Room.find(params[:room_id])
+    @schedule = Schedule.find(params[:id])
+  end
+
+  def update
+    @room = Room.find(params[:room_id])
+    @schedule = Schedule.find(params[:id])
+    @schedule.update(schedule_params)
+    if @schedule.save
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    schedule = Schedule.find(params[:id])
+    schedule.destroy
+    redirect_to root_path
   end
 
   private
