@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'schedules/index'
   root to: "schedules#index"
   resources :users, only: [:edit, :update]
-  resources :rooms, only: [:index, :new, :create] do
+  resources :rooms, only: [:index, :new, :create, :show] do
     resources :schedules, only: [:index, :new, :create]
   end
 end

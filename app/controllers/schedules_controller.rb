@@ -14,7 +14,9 @@ class SchedulesController < ApplicationController
   end
 
   def new
+    @room = Room.find(params[:room_id])
     @schedule = Schedule.new
+    @schedules = Schedule.all
   end
 
   def create
@@ -30,7 +32,7 @@ class SchedulesController < ApplicationController
 
   private
 
-  def schedule_parameter
+  def schedule_params
     params.require(:schedule).permit(:title, :body, :start_time, :end_time).merge(user_id: current_user.id)
   end
 

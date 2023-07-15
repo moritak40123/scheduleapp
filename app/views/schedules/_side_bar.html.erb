@@ -6,7 +6,7 @@
       </div>
       <% current_user.rooms.each do |room| %>
         <div class="nav-item">
-          <li><%= link_to room.room_name, rooms_path(room), class: "nav-link" %></li>
+          <li><%= link_to room.room_name, room_path(room), class: "nav-link" %></li>
         </div>
       <% end %>
     </ul>
