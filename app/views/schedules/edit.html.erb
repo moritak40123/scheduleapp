@@ -5,7 +5,8 @@
       <%= render "schedules/side_bar" %>
   </div>
 
-  <div class="main_calender">
-    <%= render "schedules/main_calender" %>
+  <div class='chat-room-form'>
+    <h1>スケジュール編集</h1>
+      <%= render partial: "form", locals: { schedule: @schedule } %>
   </div>
 </div>
