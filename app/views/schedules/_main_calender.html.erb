@@ -29,7 +29,7 @@
           <% start_date = schedule.start_time.to_date %>
           <% end_date = schedule.end_time.to_date %>
           <% if start_date <= date && date <= end_date %>
-            <span class="schedule-list">・<%= schedule.title %></span><br>
+            <span class="schedule-list"><br>・<%= schedule.title %></span>
           <% end %>
         <% end %>
     <% end %>

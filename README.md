@@ -98,7 +98,7 @@ https://docs.google.com/spreadsheets/d/1K7lNb-s0AGo5XzOw9K-po7nI5jfcQZ56AlQ0aESo
 ![Alt text](schedule.png)
 
 # 画面遷移図
-![Alt text](schedule1.png)
+![Alt text](image.png)
 
 # 開発環境
 
