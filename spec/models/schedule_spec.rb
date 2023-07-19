@@ -4,7 +4,7 @@ RSpec.describe Schedule, type: :model do
   before do
     @schedule = FactoryBot.build(:schedule)
   end
-  
+
   describe 'スケジュール投稿' do
     context 'スケジュールが投稿できる場合' do
       it 'titleとstart_timeが存在していれば保存できる' do
@@ -34,12 +34,12 @@ RSpec.describe Schedule, type: :model do
       it 'roomが紐付いていないと保存できない' do
         @schedule.room = nil
         @schedule.valid?
-        expect(@schedule.errors.full_messages).to include("Room must exist")
+        expect(@schedule.errors.full_messages).to include('Room must exist')
       end
       it 'userが紐付いていないと保存できない' do
         @schedule.user = nil
         @schedule.valid?
-        expect(@schedule.errors.full_messages).to include("User must exist")
+        expect(@schedule.errors.full_messages).to include('User must exist')
       end
     end
   end

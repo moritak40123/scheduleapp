@@ -48,5 +48,4 @@ class SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule).permit(:title, :body, :start_time, :end_time).merge(user_id: current_user.id)
   end
-
 end
