@@ -19,7 +19,15 @@
             <%= link_to "スケジュール作成", new_room_schedule_path(@room), class: "nav-link" %>
           </button>
         </div>
-        <% end %>
+        <div class="btn-group me-2">
+          <button type="button" class="btn btn-sm btn-outline-secondary">
+            <%= link_to "グールプ編集", "#", class: "nav-link" %>
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-secondary">
+            <%= link_to "削除", room_path(@room), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "nav-link" %>
+          </button>
+        </div>
+      <% end %>
     </div>
   </div>
 
