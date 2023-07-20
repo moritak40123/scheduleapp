@@ -30,6 +30,12 @@ https://docs.google.com/spreadsheets/d/1K7lNb-s0AGo5XzOw9K-po7nI5jfcQZ56AlQ0aESo
 
 # 実装した機能についての画像やGIF及びその説明
 
+## グループ作成
+https://gyazo.com/248c7b961ace63384d11d0e57d78848f
+
+## スケジュール作成
+https://gyazo.com/7e7ade16b13558b116c322b68e4fa3a2
+
 # 実装予定の機能
 
 ## スケジュール調整機能
@@ -101,8 +107,15 @@ https://docs.google.com/spreadsheets/d/1K7lNb-s0AGo5XzOw9K-po7nI5jfcQZ56AlQ0aESo
 ![Alt text](image.png)
 
 # 開発環境
-
-# ローカルでの動作方法
+- Ruby 2.6.5
+- Ruby on Rails 6.0.6.1
+- PostgreSQL 14.7
+- HTML, CSS (Bootstrap 5.0.2)
+- JavaScript (jQuery 3.7.0)
+- Render (デプロイ)
+- RSpec (テストフレームワーク)
+- FactoryBot (テストデータ生成)
+- Faker (ダミーデータ生成)
 
 # 工夫したポイント
 共有したい人とスケジュールを共有でき、それぞれのグループのカレンダーを確認できる。
