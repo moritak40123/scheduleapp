@@ -1,4 +1,7 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_room, only: [:show, :edit, :update, :destroy]
+
   def index
   end
 
@@ -16,13 +19,22 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:id])
     @schedules = @room.schedules
   end
 
+  def edit
+  end
+
+  def update
+    if @room.update(room_params)
+      redirect_to @room
+    else
+      render :edit
+    end
+  end
+
   def destroy
-    room = Room.find(params[:id])
-    room.destroy
+    @room.destroy
     redirect_to root_path
   end
 
@@ -31,4 +43,9 @@ class RoomsController < ApplicationController
   def room_params
     params.require(:room).permit(:room_name, :description, user_ids: [])
   end
+
+  def set_room
+    @room = Room.find(params[:id])
+  end
+
 end

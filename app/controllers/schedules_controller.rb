@@ -1,17 +1,19 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :find_room, only: [:new, :create, :edit, :update]
+  before_action :set_schedule, only: [:edit, :update, :destroy]
+
   def index
     @schedule = Schedule.new
     @schedules = current_user.schedules.includes(:user)
   end
 
   def new
-    @room = Room.find(params[:room_id])
     @schedule = Schedule.new
     @schedules = Schedule.all
   end
 
   def create
-    @room = Room.find(params[:room_id])
     @schedule = @room.schedules.new(schedule_params)
     if @schedule.save
       redirect_to room_schedules_path(@room)
@@ -22,13 +24,9 @@ class SchedulesController < ApplicationController
   end
 
   def edit
-    @room = Room.find(params[:room_id])
-    @schedule = Schedule.find(params[:id])
   end
 
   def update
-    @room = Room.find(params[:room_id])
-    @schedule = Schedule.find(params[:id])
     @schedule.update(schedule_params)
     if @schedule.save
       redirect_to root_path
@@ -38,8 +36,7 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-    schedule = Schedule.find(params[:id])
-    schedule.destroy
+    @schedule.destroy
     redirect_to root_path
   end
 
@@ -48,4 +45,13 @@ class SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule).permit(:title, :body, :start_time, :end_time).merge(user_id: current_user.id)
   end
+
+  def find_room
+    @room = Room.find(params[:room_id])
+  end
+
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
+  end
+
 end

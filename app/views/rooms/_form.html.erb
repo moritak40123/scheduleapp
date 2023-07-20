@@ -1,0 +1,40 @@
+<%=form_with model: @room, local: true do |f|%>
+  <div class='chat-room-form__field'>
+    <div class='chat-room-form__field--left'>
+      <%= f.label :room_name, :グループ名, class: 'chat-room-form__label'%>
+    </div>
+    <div class='chat-room-form__field--right'>
+      <%= f.text_field :room_name, class: 'chat__room_name chat-room-form__input', placeholder: 'グループ名を入力してください'%>
+    </div>
+  </div>
+  <div class='chat-room-form__field'>
+    <div class='chat-room-form__field--left'>
+      <%= f.label :description, :グループの詳細, class: 'chat-room-form__label'%>
+    </div>
+    <div class='chat-room-form__field--right'>
+      <%= f.text_field :description, class: 'chat__room_name chat-room-form__input', placeholder: 'グループの詳細を入力してください'%>
+    </div>
+  </div>
+  <div class='chat-room-form__field'>
+  </div>
+  <div class='chat-room-form__field'>
+    <div class='chat-room-form__field--left'>
+      <label class='chat-room-form__label' for='chat_room_チャットメンバー'>グループメンバー</label>
+    </div>
+    <div class='chat-room-form__field--right'>
+        <input type="checkbox" name="room[user_ids][]" value="<%= current_user.id %>" checked>
+        <%= current_user.name %><br>
+        <% User.where.not(id: current_user.id).each do |user| %>
+          <input type="checkbox" name="room[user_ids][]" value="<%= user.id %>">
+          <%= user.name %><br>
+        <% end %>
+      <%# <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>
+    </div>
+  </div>
+  <div class='chat-room-form__field'>
+    <div class='chat-room-form__field--left'></div>
+    <div class='chat-room-form__field--right'>
+      <%= f.submit class: 'chat-room-form__action-btn'%>
+    </div>
+  </div>
+<% end %>
