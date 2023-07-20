@@ -31,10 +31,16 @@ https://docs.google.com/spreadsheets/d/1K7lNb-s0AGo5XzOw9K-po7nI5jfcQZ56AlQ0aESo
 # 実装した機能についての画像やGIF及びその説明
 
 ## グループ作成
+https://gyazo.com/18963080c3c4600ad40b163fe5a87635
+サイドバーの新規グループ作成ボタンから、グループ作成ページに遷移する。
 https://gyazo.com/248c7b961ace63384d11d0e57d78848f
+フォームに必要情報を入力し、ルーム作成ボタンからグループを作成できる。
 
 ## スケジュール作成
+https://gyazo.com/01f25e4c213be97c40da3193fbfd41ff
+グループページのスケジュール作成ボタンから、スケジュール作成ページに遷移する。
 https://gyazo.com/7e7ade16b13558b116c322b68e4fa3a2
+フォームに必要情報を入力し、スケジュール作成ボタンからスケジュールを投稿できる。
 
 # 実装予定の機能
 
