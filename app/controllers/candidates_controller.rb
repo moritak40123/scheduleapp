@@ -16,6 +16,9 @@ class CandidatesController < ApplicationController
   def create
     @candidate = @room.candidates.new(candidate_params)
     if @candidate.save
+      params[:candidates_attributes].each do |index, candidate_params|
+        @candidate.candidates.create(candidate_params) if candidate_params[:start_time].present?
+      end
       redirect_to room_candidates_path(@room)
     else
       @candidates = @room.candidates.includes(:user)
@@ -43,7 +46,7 @@ class CandidatesController < ApplicationController
   private
 
   def candidate_params
-    params.require(:candidate).permit(:title, :body, :start_time, :end_time).merge(user_id: current_user.id)
+    params.require(:candidate).permit(:title, :body, candidates_attributes: [:start_time, :end_time]).merge(user_id: current_user.id)
   end
 
   def find_room
