@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <%= render "schedules/header" %>
+
+  <div class="side_bar">
+      <%= render "schedules/side_bar" %>
+  </div>
+
+  <div class='chat-room-form'>
+    <h1>スケジュール候補</h1>
+      <%= render partial: "form", locals: { candidate: @candidate } %>
+  </div>
+</div>
