@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_26_111227) do
+ActiveRecord::Schema.define(version: 2023_07_26_120819) do
+
+  create_table "candidate_schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.bigint "candidate_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["candidate_id"], name: "index_candidate_schedules_on_candidate_id"
+  end
 
   create_table "candidates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -67,6 +76,7 @@ ActiveRecord::Schema.define(version: 2023_07_26_111227) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "candidate_schedules", "candidates"
   add_foreign_key "candidates", "rooms"
   add_foreign_key "candidates", "users"
   add_foreign_key "room_users", "rooms"
