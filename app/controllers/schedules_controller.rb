@@ -4,8 +4,10 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:edit, :update, :destroy]
 
   def index
+    @rooms = current_user.rooms.includes(:user)
     @schedule = Schedule.new
     @schedules = current_user.schedules.includes(:user)
+    @candidates = current_user.candidates.includes(:user)
   end
 
   def new

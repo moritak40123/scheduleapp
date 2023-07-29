@@ -4,6 +4,7 @@ class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:edit, :update, :destroy]
 
   def index
+    @rooms = current_user.rooms.includes(:user)
     @candidate = Candidate.new
     @candidates = current_user.candidates.includes(:user)
   end
