@@ -122,9 +122,9 @@
                 </ul>
               </td>
               <td>
-                <%= link_to "確定", "#", class: "btn btn-sm btn-outline-secondary" %>
-                <%= link_to "編集", "#", class: "btn btn-sm btn-outline-secondary" %>
-                <%= link_to "削除", "#", method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-secondary" %>
+                <%= link_to "確定", confirm_room_candidate_path(@room, candidate), method: :post, data: { confirm: "候補を確定しますか？" }, class: "btn btn-sm btn-outline-secondary" %>
+                <%= link_to "編集", edit_room_candidate_path(@room, candidate), class: "btn btn-sm btn-outline-secondary" %>
+                <%= link_to "削除", room_candidate_path(@room, candidate), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-secondary" %>
               </td>
             <% end %>
           </tr>

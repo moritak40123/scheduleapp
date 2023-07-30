@@ -1,7 +1,7 @@
 class CandidatesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_room, only: [:new, :create, :edit, :update]
-  before_action :set_candidate, only: [:edit, :update, :destroy]
+  before_action :set_candidate, only: [:edit, :update, :destroy, :confirm]
 
   def index
     @rooms = current_user.rooms.includes(:user)
@@ -39,6 +39,21 @@ class CandidatesController < ApplicationController
   def destroy
     @candidate.destroy
     redirect_to root_path
+  end
+
+  def confirm
+    @schedule = Schedule.new(
+      title: @candidate.title,
+      body: @candidate.body,
+      start_time: @candidate.start_time,
+      end_time: @candidate.end_time,
+      room_id: @candidate.room_id,
+      user_id: @candidate.user_id
+    )
+    if @schedule.save
+      @candidate.destroy
+      redirect_to root_path, notice: '予定が確定されました。'
+    end
   end
 
   private
