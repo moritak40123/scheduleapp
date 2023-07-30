@@ -6,8 +6,8 @@ class SchedulesController < ApplicationController
   def index
     @rooms = current_user.rooms.includes(:user)
     @schedule = Schedule.new
-    @schedules = current_user.schedules.includes(:user)
-    @candidates = current_user.candidates.includes(:user)
+    @schedules = current_user.schedules.includes(:user, :room)
+    @candidates = current_user.candidates.includes(:user, :room)
   end
 
   def new

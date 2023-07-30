@@ -6,7 +6,7 @@ class CandidatesController < ApplicationController
   def index
     @rooms = current_user.rooms.includes(:user)
     @candidate = Candidate.new
-    @candidates = current_user.candidates.includes(:user)
+    @candidates = current_user.candidates.includes(:user, :room)
   end
 
   def new

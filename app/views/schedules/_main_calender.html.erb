@@ -76,7 +76,7 @@
         <% @schedules.where("start_time >= ?", Date.today).order(start_time: :asc).each do |schedule| %>
           <tr>
             <td><%= schedule.title %></td>
-            <td><%= schedule.room.room_name %></td>
+            <td><%= link_to schedule.room.room_name, room_path(schedule.room) %></td>
             <td><%= schedule.start_time.in_time_zone("Asia/Tokyo").strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= schedule.end_time.in_time_zone("Asia/Tokyo").strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= schedule.body %></td>
@@ -109,7 +109,7 @@
         <% @candidates.where("start_time >= ?", Date.today).order(start_time: :asc).each do |candidate| %>
           <tr>
             <td><%= candidate.title %></td>
-            <td><%= candidate.room.room_name %></td>
+            <td><%= link_to candidate.room.room_name, room_path(candidate.room) %></td>
             <td><%= candidate.start_time.in_time_zone("Asia/Tokyo").strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= candidate.end_time.in_time_zone("Asia/Tokyo").strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= candidate.body %></td>
