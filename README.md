@@ -42,12 +42,19 @@ https://gyazo.com/01f25e4c213be97c40da3193fbfd41ff
 https://gyazo.com/7e7ade16b13558b116c322b68e4fa3a2
 フォームに必要情報を入力し、スケジュール作成ボタンからスケジュールを投稿できる。
 
+## スケジュール候補作成
+https://gyazo.com/165efbeb4c0ed995c8c8b16dd79c1e4a
+グループページの候補作成ボタンから、スケジュール候補作成ページに遷移する。
+https://gyazo.com/507693318fb37d5b3d394026d0085ae9
+フォームに必要情報を入力し、スケジュール候補作成ボタンからスケジュールを投稿できる。
+https://gyazo.com/436272c456b13273223d7d0e962ed694
+調整中の予定確定ボタンから候補を確定し、スケジュールに本登録できる。
+
 # 実装予定の機能
 
 ## スケジュール調整機能
-1.グループページから、候補日を最大5日程投稿
+1.候補日を最大5日程投稿
 2.候補日から参加可否を選択
-3.候補日を決定or削除
 
 # テーブル設計
 
@@ -64,6 +71,7 @@ https://gyazo.com/7e7ade16b13558b116c322b68e4fa3a2
 - has_many :room_users
 - has_many :rooms, through: :room_users
 - has_many :schedules
+- has_many :candidates
 
 ## rooms テーブル
 
@@ -77,6 +85,7 @@ https://gyazo.com/7e7ade16b13558b116c322b68e4fa3a2
 - has_many :room_users
 - has_many :rooms, through: :room_users
 - has_many :schedules
+- has_many :candidates
 
 ## room_users テーブル
 
@@ -114,13 +123,13 @@ https://gyazo.com/7e7ade16b13558b116c322b68e4fa3a2
 | body        | string     |                                |
 | start_date  | datetime   | null: false                    |
 | end_date    | datetime   | null: false                    |
-<!-- | user        | references | null: false, foreign_key: true | -->
+| user        | references | null: false, foreign_key: true |
 | room        | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :room
-<!-- - belongs_to :user -->
+- belongs_to :user
 
 # データベース設計
 ![Alt text](schedule.png)
@@ -143,3 +152,4 @@ https://gyazo.com/7e7ade16b13558b116c322b68e4fa3a2
 共有したい人とスケジュールを共有でき、それぞれのグループのカレンダーを確認できる。
 
 トップページでは、自分が参加している全てのグループのスケジュールを表示するようにすることで、自分のスケジュールを把握しやすいようにした。
+スケジュール候補(仮スケジュール)を確定スケジュールとは別で登録できるようにし、スケジュールの調整を可能にした。
