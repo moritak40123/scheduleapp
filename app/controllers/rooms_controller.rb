@@ -20,6 +20,7 @@ class RoomsController < ApplicationController
 
   def show
     @schedules = @room.schedules
+    @candidates = @room.candidates
   end
 
   def edit

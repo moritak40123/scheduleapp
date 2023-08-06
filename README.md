@@ -106,6 +106,22 @@ https://gyazo.com/7e7ade16b13558b116c322b68e4fa3a2
 - belongs_to :room
 - belongs_to :user
 
+## candidates テーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| title       | string     | null: false                    |
+| body        | string     |                                |
+| start_date  | datetime   | null: false                    |
+| end_date    | datetime   | null: false                    |
+<!-- | user        | references | null: false, foreign_key: true | -->
+| room        | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :room
+<!-- - belongs_to :user -->
+
 # データベース設計
 ![Alt text](schedule.png)
 

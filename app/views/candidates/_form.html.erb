@@ -8,7 +8,7 @@
     <% end %>
   </div>
 </div>
-<%=form_with model: [@room, @schedule], local: true do |f|%>
+<%=form_with model: [@room, @candidate], local: true do |f|%>
   <div class='chat-room-form__field'>
     <div class='chat-room-form__field--left'>
       <%= f.label :title, :タイトル, class: 'chat-room-form__label'%>
@@ -44,7 +44,7 @@
   <div class='chat-room-form__field'>
     <div class='chat-room-form__field--left'></div>
     <div class='chat-room-form__field--right'>
-      <%= f.submit "スケジュールを登録", class: 'chat-room-form__action-btn'%>
+      <%= f.submit "候補を登録", class: 'chat-room-form__action-btn'%>
     </div>
   </div>
 <% end %>
